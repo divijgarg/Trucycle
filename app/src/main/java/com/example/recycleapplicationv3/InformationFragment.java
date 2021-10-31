@@ -49,6 +49,7 @@ public class InformationFragment extends Fragment {
     public static InformationFragment newInstance(String param1, String param2) {
         InformationFragment fragment = new InformationFragment();
         Bundle args = new Bundle();
+
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
@@ -62,6 +63,7 @@ public class InformationFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
     }
 
     @Override
@@ -92,7 +94,7 @@ public class InformationFragment extends Fragment {
 
         recyclerView2 = rootView.findViewById(R.id.idTutorialItems2);
         tutPic = new String[]{"https://cdn.wm.com/content/dam/wm/assets/recycle-right/recycling-101/curbside-recycling-bin-man.jpg/jcr:content/renditions/rendition.xl.jpeg", "https://www.pennwaste.com/wp-content/uploads/IMG_20150213_121626286.jpg", "https://how2recycle.info/assets/uploads/featured/_newsSingleFullSize/How2RecycleLogowith-words-horizontal-6.jpeg", "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/EPA_logo.svg/1280px-EPA_logo.svg.png"};
-        tutName = new String[]{"Recyclable Materials", "Recycling Routine", "Dos and donts of recycling", "My recycling life", "Separating waste and recycling"};
+        tutName = new String[]{"3 Recycling Rules", "Recycling Facts", "How2Recycle", "How Do I Recycle?"};
         tutUrl = new String[]{"https://www.wm.com/us/en/recycle-right/recycling-101", "https://www.pennwaste.com/recycling/why-recycle/", "https://how2recycle.info/", "https://www.epa.gov/recycle/how-do-i-recycle-common-recyclables"};
 
 

@@ -18,37 +18,42 @@
     <!--            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintHorizontal_bias="0.0"-->
     <!--            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintTop_toTopOf="parent"-->
     <!--            app:layout_constraintVertical_bias="0.895"/>-->
-    <RelativeLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/relativeLayout2"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <VideoView
             android:id="@+id/videoView2"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:focusable="false"
             android:focusableInTouchMode="false" />
 
         <Button
             android:id="@+id/sign_in_button"
-            android:layout_width="136dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBottom="@id/videoView2"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="20dp"
+            android:layout_marginTop="676dp"
+            android:layout_marginBottom="7dp"
             android:background="@drawable/custom_google_button"
+
             android:fontFamily="@font/caviar_dreams_bold"
-            android:text="@string/sign_in"
+            android:text="Sign in"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/videoView2"
+            app:layout_constraintHorizontal_bias="0.527"
+            app:layout_constraintStart_toEndOf="@+id/videoView2"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0" />
 
-            />
 
-
-    </RelativeLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="253dp"
-        android:layout_height="210dp"
+        android:layout_width="143dp"
+        android:layout_height="136dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -65,7 +70,8 @@
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="101dp"
         android:fontFamily="@font/caviar_dreams_bold"
-        android:text="TruCycle"
+        android:text="Trucycle"
+
         android:textSize="60sp"
         app:layout_constraintBottom_toTopOf="@+id/sign_in_button"
         app:layout_constraintEnd_toEndOf="parent"

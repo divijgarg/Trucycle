@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@drawable/gradientbackground"
     tools:context=".MainActivity">
 
     <SurfaceView
         android:id="@+id/surface_view"
         android:layout_width="324dp"
         android:layout_height="440dp"
-        android:layout_marginTop="284dp"
+        android:layout_marginTop="292dp"
 
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.494"
@@ -35,6 +35,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:padding="5dp"
+        android:fontFamily="@font/caviar_dreams_bold"
+        android:textColor="@color/black"
+
         android:text="1. Hold camera in front of object's barcode."
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -46,6 +49,9 @@
         android:layout_width="311dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="9dp"
+        android:fontFamily="@font/caviar_dreams_bold"
+        android:textColor="@color/black"
+
         android:padding="5dp"
         android:text="2. Our map will automatically display places to recycle the item"
         android:textSize="18sp"
@@ -58,12 +64,16 @@
         android:layout_width="311dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
+        android:fontFamily="@font/caviar_dreams_bold"
+        android:textColor="@color/black"
         android:padding="5dp"
         android:text="3. Click on a location and find the map button for directions!"
         android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/surface_view"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sad2" />
+        app:layout_constraintTop_toBottomOf="@+id/sad2"
+        app:layout_constraintVertical_bias="0.312" />
 
     <View
         android:id="@+id/view2"
@@ -82,6 +92,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="How to Scan"
+        android:fontFamily="@font/caviar_dreams_bold"
+        android:textColor="@color/black"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"

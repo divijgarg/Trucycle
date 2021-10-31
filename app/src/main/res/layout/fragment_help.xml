@@ -5,7 +5,7 @@
     android:id="@+id/frameLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#EEEEEE"
+    android:background="@drawable/gradientbackground"
     tools:context=".HelpFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -42,6 +42,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
+                android:fontFamily="@font/caviar_dreams_bold"
                 android:text="@string/things_to_do"
                 android:textSize="30sp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -90,6 +91,7 @@
                         android:layout_height="wrap_content"
                         android:text="Read environmental news"
                         android:textColor="#4A4A4A"
+                        android:fontFamily="@font/caviar_dreams_bold"
                         android:textSize="18sp" />
 
                     <TextView
@@ -97,6 +99,7 @@
                         android:layout_height="wrap_content"
                         android:text="Find out the latest news and developments regarding protecting our environment."
                         android:textColor="#bebebe"
+                        android:fontFamily="@font/caviar_dreams_bold"
                         android:textSize="14sp">
 
                     </TextView>
@@ -134,6 +137,7 @@
                         android:layout_height="wrap_content"
                         android:text="Watch some tutorials"
                         android:textColor="#4A4A4A"
+                        android:fontFamily="@font/caviar_dreams_bold"
                         android:textSize="18sp" />
 
                     <TextView
@@ -141,6 +145,7 @@
                         android:layout_height="wrap_content"
                         android:text="Access our library of composting, recycling, and other environmental videos."
                         android:textColor="#bebebe"
+                        android:fontFamily="@font/caviar_dreams_bold"
                         android:textSize="14sp">
 
                     </TextView>
@@ -178,6 +183,7 @@
                         android:layout_height="wrap_content"
                         android:text="Find places to recycle"
                         android:textColor="#4A4A4A"
+                        android:fontFamily="@font/caviar_dreams_bold"
                         android:textSize="18sp" />
 
                     <TextView
@@ -185,7 +191,9 @@
                         android:layout_height="wrap_content"
                         android:text="Simply hold your camera in front of any object's barcode, and find places to recycle the object."
                         android:textColor="#bebebe"
+                        android:fontFamily="@font/caviar_dreams_bold"
                         android:textSize="14sp">
+
 
                     </TextView>
 
