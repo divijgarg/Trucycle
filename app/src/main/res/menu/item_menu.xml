@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/nav_home"
+        android:title="Home"
+        android:icon="@drawable/ic_home"/>
+
+    <item android:id="@+id/nav_like"
+        android:title="Recycling News"
+        android:icon="@drawable/ic_news"/>
+
+    <item android:id="@+id/nav_bar"
+        android:title="Scan a Barcode"
+        android:icon="@drawable/ic_baseline_camera_24"/>
+    <item android:id="@+id/nav_info"
+        android:title="Recycling Information"
+        android:icon="@drawable/ic_baseline_info_24"/>
+</menu>

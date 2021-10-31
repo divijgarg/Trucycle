@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".SignInActivity">
+
+    <!--    <com.google.android.gms.common.SignInButton-->
+    <!--            android:id="@+id/sign_in_button"-->
+    <!--            android:layout_width="315dp"-->
+    <!--            android:layout_height="54dp"-->
+    <!--            android:background="@drawable/button"-->
+    <!--            android:elevation="2dp"-->
+    <!--            app:layout_constraintStart_toStartOf="parent"-->
+    <!--            android:layout_marginStart="48dp" android:layout_marginEnd="48dp"-->
+    <!--            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintHorizontal_bias="0.0"-->
+    <!--            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintTop_toTopOf="parent"-->
+    <!--            app:layout_constraintVertical_bias="0.895"/>-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <VideoView
+            android:id="@+id/videoView2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:focusable="false"
+            android:focusableInTouchMode="false" />
+
+        <Button
+            android:id="@+id/sign_in_button"
+            android:layout_width="136dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/videoView2"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/custom_google_button"
+            android:fontFamily="@font/caviar_dreams_bold"
+            android:text="@string/sign_in"
+
+            />
+
+
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="253dp"
+        android:layout_height="210dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.025"
+        app:srcCompat="@drawable/logo" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="101dp"
+        android:fontFamily="@font/caviar_dreams_bold"
+        android:text="RecycleX"
+        android:textSize="60sp"
+        app:layout_constraintBottom_toTopOf="@+id/sign_in_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        tools:ignore="NotSibling" />
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

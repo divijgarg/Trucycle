@@ -1,0 +1,24 @@
+<resources>
+    <!--
+    TODO: Before you run your application, you need a Google Maps API key.
+
+    To get one, follow this link, follow the directions and press "Create" at the end:
+
+    https://console.developers.google.com/flows/enableapi?apiid=maps_android_backend&keyType=CLIENT_SIDE_ANDROID&r=5C:F8:B3:23:EB:54:D3:7F:4D:02:BB:25:D7:13:07:67:38:86:B4:AE%3Bcom.example.recycleapplicationv3
+
+    You can also add your credentials to an existing key, using these values:
+
+    Package name:
+    com.example.recycleapplicationv3
+
+    SHA-1 certificate fingerprint:
+    5C:F8:B3:23:EB:54:D3:7F:4D:02:BB:25:D7:13:07:67:38:86:B4:AE
+
+    Alternatively, follow the directions here:
+    https://developers.google.com/maps/documentation/android/start#get-key
+
+    Once you have your key (it starts with "AIza"), replace the "google_maps_key"
+    string in this file.
+    -->
+    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyANbBwJQ5ix-09APK1_rsqIVB7gyQPKaKQ</string>
+</resources>

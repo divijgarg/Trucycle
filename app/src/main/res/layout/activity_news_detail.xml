@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relativeLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".NewsDetailActivity">
+
+
+    <TextView
+        android:id="@+id/idTVTitle"
+        android:layout_width="399dp"
+        android:layout_height="77dp"
+        android:layout_marginTop="24dp"
+        android:padding="4dp"
+        android:text="Title"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="4dp" />
+
+    <androidx.constraintlayout.utils.widget.ImageFilterView
+        android:id="@+id/idIVNews"
+        android:layout_width="404dp"
+        android:layout_height="254dp"
+        android:padding="3dp"
+        android:scaleType="centerCrop"
+        android:translationY="10dp"
+        app:layout_constraintTop_toBottomOf="@+id/idTVTitle"
+        tools:layout_editor_absoluteX="4dp" />
+
+    <TextView
+        android:id="@+id/idTVSubDesc"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="364dp"
+        android:padding="4dp"
+        android:text="Sub Description"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:translationY="30dp"
+        app:layout_constraintBottom_toTopOf="@+id/idBtnReadNews"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/idIVNews"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/idBtnReadNews"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="40dp"
+        android:background="@color/yellow"
+        android:backgroundTint="@color/yellow"
+        android:text="Read full news"
+        android:textAllCaps="false"
+        android:translationY="-100dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
