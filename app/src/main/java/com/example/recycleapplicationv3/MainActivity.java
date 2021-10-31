@@ -3,13 +3,21 @@ package com.example.recycleapplicationv3;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 
 import android.annotation.SuppressLint;
+import android.app.AlarmManager;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.MenuItem;
@@ -19,6 +27,13 @@ import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
+
+import java.time.DayOfWeek;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.time.temporal.TemporalAdjusters;
+import java.util.Calendar;
 
 
 public class
@@ -33,7 +48,7 @@ MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         d1=(DrawerLayout)findViewById(R.id.drawer);
-        setTitle("Recycle!");
+        setTitle("Dashboard");
         abdt=new ActionBarDrawerToggle(this,d1,null, R.string.Open,R.string.Close);
         abdt.setDrawerIndicatorEnabled(true);
         d1.addDrawerListener(abdt);
@@ -47,6 +62,9 @@ MainActivity extends AppCompatActivity {
         Fragment fragment = new HomeFragment();
 
         getSupportFragmentManager().beginTransaction().replace(R.id.body_container, fragment).commit();
+
+        createNotificationChannel();
+
 
 //        getSupportActionBar().hide();
 
@@ -109,6 +127,80 @@ MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item){
 
         return abdt.onOptionsItemSelected(item)||super.onOptionsItemSelected(item);
+
+    }
+
+
+    private void createNotificationChannel(){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            CharSequence name = "RecycleNotificationChannel";
+            String description = "Channel for recycle reminder";
+            int importance = NotificationManager.IMPORTANCE_DEFAULT;
+            NotificationChannel channel = new NotificationChannel("notifyRecycle", name, importance);
+            channel.setDescription(description);
+
+            NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+            notificationManager.createNotificationChannel(channel);
+
+
+        }
+    }
+    public void setNotif(int dayindex,int hour, int minute) {
+
+        //you can get notificationManager like this:
+        //notificationManage r= (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        NotificationManagerCompat.from(getApplicationContext()).cancelAll();
+
+
+        Intent intent = new Intent(MainActivity.this, NotificationBroadcast.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(MainActivity.this, 0, intent, 0);
+
+        AlarmManager alarmManager= (AlarmManager) getSystemService(ALARM_SERVICE);
+        //long triggertime=when alarm is set
+        //get date, time from fb here.
+
+        String[] daynames={"SUNDAY","MONDAY","TUESDAY","WEDNESDAY","THURSDAY","FRIDAY","SATURDAY"};
+        LocalDateTime dateTime = LocalDateTime.now();
+        LocalDateTime nextoccurence;
+
+        switch(dayindex) {
+            case 0:
+                nextoccurence = dateTime.with(TemporalAdjusters.nextOrSame(DayOfWeek.MONDAY));
+                break;
+            case 1:
+                nextoccurence = dateTime.with(TemporalAdjusters.nextOrSame(DayOfWeek.TUESDAY));
+                break;
+            case 2:
+                nextoccurence = dateTime.with(TemporalAdjusters.nextOrSame(DayOfWeek.WEDNESDAY));
+                break;
+            case 3:
+                nextoccurence = dateTime.with(TemporalAdjusters.nextOrSame(DayOfWeek.THURSDAY));
+                break;
+            case 4:
+                nextoccurence = dateTime.with(TemporalAdjusters.nextOrSame(DayOfWeek.FRIDAY));
+                break;
+            case 5:
+                nextoccurence = dateTime.with(TemporalAdjusters.nextOrSame(DayOfWeek.SATURDAY));
+                break;
+            case 6:
+                nextoccurence = dateTime.with(TemporalAdjusters.nextOrSame(DayOfWeek.SUNDAY));
+                break;
+
+            default:
+                throw new IllegalStateException("Unexpected value: " + dayindex);
+        }
+        ZonedDateTime zdt = nextoccurence.atZone(ZoneId.of("America/Chicago"));
+        Calendar calendar = Calendar.getInstance();
+        int hour24hrs = calendar.get(Calendar.HOUR_OF_DAY);
+        int minutes = calendar.get(Calendar.MINUTE);
+        long millis = zdt.toInstant().toEpochMilli()+3600000*(hour-hour24hrs)+60000*(minute-minutes);
+        double extra=Math.floorMod(millis,60000);
+        millis= (long) (millis-extra);
+
+        System.out.println("NOTIF set to "+millis);
+
+        alarmManager.set(AlarmManager.RTC_WAKEUP,millis,
+                pendingIntent);
 
     }
 }

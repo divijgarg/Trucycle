@@ -1,10 +1,15 @@
 package com.example.recycleapplicationv3;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
+import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -13,6 +18,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.ProgressBar;
@@ -56,6 +62,9 @@ public class HomeFragment extends Fragment {
     private ListView lvItems;
     private ProgressBar scansProgBar;
     private TextView scansTextView;
+    private Button notificationbutton;
+
+    private ImageView bronzeMedal, goldMedal, silverMedal;
 
     //    private LinearLayout barcode, news, tutorials;
 //
@@ -104,6 +113,34 @@ public class HomeFragment extends Fragment {
         });
 
 
+        notificationbutton=view.findViewById(R.id.setNotification);
+        notificationbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String[] daysofweek={"MONDAY","TUESDAY","WEDNESDAY","THURSDAY","FRIDAY","SATURDAY","SUNDAY"};
+
+                new AlertDialog.Builder(getContext())
+                        .setTitle("Choose Date")
+
+                        .setItems(daysofweek, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                // The 'which' argument contains the index position
+                                // of the selected item
+                                showTimePicker(which);
+                            }
+                        })
+                        .setIcon(R.drawable.logo)
+                        .show();
+
+            }
+        });
+
+
+
+        bronzeMedal = (ImageView) view.findViewById(R.id.bronzeMedal);
+        goldMedal = (ImageView) view.findViewById(R.id.goldMedal);
+        silverMedal = (ImageView) view.findViewById(R.id.silverMedal);
+
         scansProgBar = view.findViewById(R.id.scansProgBar);
         scansTextView = view.findViewById(R.id.scansTextView);
         final int[] totalScans = {0};
@@ -113,8 +150,34 @@ public class HomeFragment extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 try {
+                    int modDivider = 1;
+                    int subtractor = 1;
+//                    int multiplier = 4;
                     totalScans[0] = (int) ((long) snapshot.getValue());
-                    scansProgBar.setProgress((totalScans[0] % 25) * 4);
+
+                    if (totalScans[0]>=25 && totalScans[0]<75) {
+                        modDivider = 50;
+                        subtractor = 25;
+                        bronzeMedal.setVisibility(View.VISIBLE);
+                    } else if (totalScans[0]>=75 && totalScans[0]<175) {
+                        modDivider = 100;
+                        subtractor = 75;
+                        bronzeMedal.setVisibility(View.VISIBLE);
+                        silverMedal.setVisibility(View.VISIBLE);
+                    } else if (totalScans[0]>=175){
+                        modDivider = 100;
+                        subtractor = 175;
+                        bronzeMedal.setVisibility(View.VISIBLE);
+                        silverMedal.setVisibility(View.VISIBLE);
+                        goldMedal.setVisibility(View.VISIBLE);
+
+                    } else {
+                        subtractor = 0;
+                        modDivider = 25;
+                    }
+                    totalScans[0] = totalScans[0]-subtractor;
+
+                    scansProgBar.setProgress((totalScans[0] % modDivider) * (100/modDivider));
                     scansTextView.setText(Integer.toString(totalScans[0]));
 //                userRef.child("scans").setValue(totalScans[0]+1);
                 }
@@ -129,11 +192,28 @@ public class HomeFragment extends Fragment {
             }
         });
 
+
+
 //        scanBarcode= (Button) view.findViewById(R.id.scanbarcode);
 
-
+    requestPermissions();
 
     return view;
+
+    }
+
+    private void requestPermissions() {
+        ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.CAMERA,
+                Manifest.permission.ACCESS_COARSE_LOCATION,
+                Manifest.permission.ACCESS_FINE_LOCATION}, 44);
+
+
+//        initialiseDetectorsAndSources();
+    }
+
+    private void showTimePicker(int dayindex){
+        DialogFragment newFragment = new TimePickerFragment(dayindex);
+        newFragment.show(getActivity().getSupportFragmentManager(), "timePicker");
 
     }
 }
